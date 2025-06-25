@@ -298,7 +298,7 @@ public class Patterns {
     }
 
     public static void patter11( int n){
-        int flag ;
+        int flag;
         for (int i=1;i<=n;i++){
             if(i%2==0){
                 flag = 0;
