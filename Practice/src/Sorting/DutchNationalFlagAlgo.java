@@ -18,7 +18,7 @@ public class DutchNationalFlagAlgo {
                 mid++;
             } else {
                 int tmp = nums[mid];
-                nums[mid] = nums[high];
+                nums[mid++] = nums[high];
                 nums[high--] = tmp;
             }
         }
