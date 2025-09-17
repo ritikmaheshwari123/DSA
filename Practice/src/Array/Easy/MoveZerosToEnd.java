@@ -22,8 +22,8 @@ public class MoveZerosToEnd {
             }
         }
 
-        for(int i=0;i<nums.length;i++){
-            System.out.print(nums[i]+" ");
+        for (int num : nums) {
+            System.out.print(num + " ");
         }
     }
 }
