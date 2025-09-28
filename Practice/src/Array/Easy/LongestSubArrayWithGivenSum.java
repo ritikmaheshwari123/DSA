@@ -26,6 +26,7 @@ public class LongestSubArrayWithGivenSum {
         return maxLength;
     }
 
+    // Optimized approach for positive numbers only:
     public static int getLongestSubArrayUsing2Pointer(int []a, long k) {
         int n = a.length; // size of the array.
 
@@ -53,6 +54,7 @@ public class LongestSubArrayWithGivenSum {
         return maxLen;
     }
 
+    // Optimized approach for both positive and negative numbers:
     public static int getLongestSubArrayUsingHashing(int []a, long k) {
         int n = a.length; // size of the array.
 
