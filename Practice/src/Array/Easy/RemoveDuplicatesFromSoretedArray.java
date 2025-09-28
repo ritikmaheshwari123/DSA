@@ -2,7 +2,7 @@ package Array.Easy;
 
 public class RemoveDuplicatesFromSoretedArray {
     public static void main(String[] args) {
-        int arr[] = {1,1,2};
+        int[] arr = {1,1,2,2,2,3,3,4,5,6};
         int k = removeDuplicates(arr);
         System.out.println("The array after removing duplicate elements is ");
         for (int i = 0; i < k; i++) {
