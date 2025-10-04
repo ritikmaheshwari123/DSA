@@ -7,7 +7,7 @@ import java.util.Set;
 public class LongestConsecutiveSequence {
     public static void main(String[] args) {
         int[] arr = {1,0,1,2};
-        System.out.println(longestConsecutive(arr));
+        System.out.println(longestConsecutiveOptimal(arr));
     }
 
     private static int longestConsecutive(int[] arr) {
