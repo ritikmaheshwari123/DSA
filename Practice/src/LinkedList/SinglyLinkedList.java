@@ -113,6 +113,43 @@ public class SinglyLinkedList {
         }
     }
 
+    public boolean search(int key){
+        ListNode current = head;
+        while(current != null){
+            if(current.data == key){
+                return true;
+            }
+            current = current.next;
+        }
+        return false;
+    }
+
+    public void reverse(){
+        ListNode previous = null;
+        ListNode current = head;
+        ListNode next = null;
+        while(current != null){
+            next = current.next;
+            current.next = previous;
+            previous = current;
+            current = next;
+        }
+        head = previous;
+    }
+
+    public int getMiddleNode() {
+        if (head == null) {
+            throw new IllegalStateException("List is empty");
+        }
+        ListNode slowPointer = head;
+        ListNode fastPointer = head;
+        while (fastPointer != null && fastPointer.next != null) {
+            slowPointer = slowPointer.next;
+            fastPointer = fastPointer.next.next;
+        }
+        return slowPointer.data;
+    }
+
     public static void main(String[] args) {
         SinglyLinkedList sll = new SinglyLinkedList();
         sll.head = new ListNode(10);
@@ -152,5 +189,15 @@ public class SinglyLinkedList {
         sll.deleteAtPosition(position);
         sll.display();
         System.out.println("Length of linked list after deleting node at position " + position + " : " + sll.length());
+
+        int key = 8;
+        System.out.println("Searching for " + key + ": " + sll.search(key));
+
+        sll.reverse();
+        System.out.println("Reversed linked list:");
+        sll.display();
+
+        System.out.println("Middle node of the linked list: " + sll.getMiddleNode());
+
     }
 }
