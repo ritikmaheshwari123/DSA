@@ -36,6 +36,42 @@ public class SinglyLinkedList {
         return count;
     }
 
+    public void insertAtBeginning(int data){
+        ListNode newNode = new ListNode(data);
+        newNode.next = head;
+        head = newNode;
+    }
+
+    public void insertAtEnd(int data){
+        ListNode newNode = new ListNode(data);
+        if(head == null){
+            head = newNode;
+            return;
+        }
+        ListNode current = head;
+        while(current.next != null){
+            current = current.next;
+        }
+        current.next = newNode;
+    }
+
+    public void insertAtPosition(int data, int position){
+        ListNode newNode = new ListNode(data);
+        if(position == 1){
+            newNode.next = head;
+            head = newNode;
+        } else {
+            ListNode current = head;
+            int count = 1;
+            while(count < position - 1 ){
+                current = current.next;
+                count++;
+            }
+            newNode.next = current.next;
+            current.next = newNode;
+        }
+    }
+
     public static void main(String[] args) {
         SinglyLinkedList sll = new SinglyLinkedList();
         sll.head = new ListNode(10);
@@ -49,5 +85,17 @@ public class SinglyLinkedList {
 
         sll.display();
         System.out.println("Length of linked list: " + sll.length());
+
+        sll.insertAtBeginning(5);
+        sll.display();
+        System.out.println("Length of linked list after insertion at beginning: " + sll.length());
+
+        sll.insertAtEnd(20);
+        sll.display();
+        System.out.println("Length of linked list after insertion at end: " + sll.length());
+
+        sll.insertAtPosition(15, 7);
+        sll.display();
+        System.out.println("Length of linked list after insertion at position: " + sll.length());
     }
 }
