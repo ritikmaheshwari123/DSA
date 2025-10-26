@@ -63,12 +63,53 @@ public class SinglyLinkedList {
         } else {
             ListNode current = head;
             int count = 1;
-            while(count < position - 1 ){
+            while(count < position - 1 && current.next != null){
                 current = current.next;
                 count++;
             }
             newNode.next = current.next;
             current.next = newNode;
+        }
+    }
+
+    public void deleteFirst(){
+        if(head == null){
+            return;
+        }
+        head = head.next;
+    }
+
+    public void deleteLast(){
+        if(head == null){
+            return;
+        }
+        if(head.next == null){
+            head = null;
+            return;
+        }
+        ListNode current = head;
+        while(current.next.next != null){
+            current = current.next;
+        }
+        current.next = null;
+    }
+
+    public void deleteAtPosition(int position){
+        if(head == null){
+            return;
+        }
+        if(position == 1){
+            head = head.next;
+            return;
+        }
+        ListNode current = head;
+        int count = 1;
+        while(count < position - 1 && current.next != null){
+            current = current.next;
+            count++;
+        }
+        if(current.next != null){
+            current.next = current.next.next;
         }
     }
 
@@ -94,8 +135,22 @@ public class SinglyLinkedList {
         sll.display();
         System.out.println("Length of linked list after insertion at end: " + sll.length());
 
-        sll.insertAtPosition(15, 7);
+        int position = 3;
+        sll.insertAtPosition(15, position);
         sll.display();
-        System.out.println("Length of linked list after insertion at position: " + sll.length());
+        System.out.println("Length of linked list after insertion at " + position + " : " + sll.length());
+
+        sll.deleteFirst();
+        sll.display();
+        System.out.println("Length of linked list after deleting first node: " + sll.length());
+
+        sll.deleteLast();
+        sll.display();
+        System.out.println("Length of linked list after deleting last node: " + sll.length());
+
+        position = 2;
+        sll.deleteAtPosition(position);
+        sll.display();
+        System.out.println("Length of linked list after deleting node at position " + position + " : " + sll.length());
     }
 }
