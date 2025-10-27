@@ -150,6 +150,27 @@ public class SinglyLinkedList {
         return slowPointer.data;
     }
 
+    public void nthFromEnd(int n) {
+        if (head == null) {
+            throw new IllegalStateException("List is empty");
+        }
+        ListNode mainPointer = head;
+        ListNode refPointer = head;
+        int count = 0;
+        while (count < n) {
+            if (refPointer == null) {
+                throw new IllegalArgumentException(n + " is greater than the number of nodes in the list");
+            }
+            refPointer = refPointer.next;
+            count++;
+        }
+        while (refPointer != null) {
+            mainPointer = mainPointer.next;
+            refPointer = refPointer.next;
+        }
+        System.out.println("The " + n + "th node from the end is: " + mainPointer.data);
+    }
+
     public static void main(String[] args) {
         SinglyLinkedList sll = new SinglyLinkedList();
         sll.head = new ListNode(10);
@@ -198,6 +219,10 @@ public class SinglyLinkedList {
         sll.display();
 
         System.out.println("Middle node of the linked list: " + sll.getMiddleNode());
+
+        int n = 2;
+        System.out.println("Finding " + n + "th node from the end:");
+        sll.nthFromEnd(n);
 
     }
 }
