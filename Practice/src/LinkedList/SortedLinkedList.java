@@ -33,6 +33,22 @@ public class SortedLinkedList {
         }
     }
 
+    public void insertInSortedList(int value){
+        SortedLinkedList.ListNode newNode = new SortedLinkedList.ListNode(value);
+        if(head == null || value < head.data){
+            newNode.next = head;
+            head = newNode;
+            return;
+        }
+
+        SortedLinkedList.ListNode current = head;
+        while(current.next != null && current.next.data < value){
+            current = current.next;
+        }
+        newNode.next = current.next;
+        current.next = newNode;
+    }
+
     public static void main(String[] args) {
         SortedLinkedList sll = new SortedLinkedList();
         sll.head = new SortedLinkedList.ListNode(1);
@@ -53,6 +69,14 @@ public class SortedLinkedList {
         sll.display();
         sll.removeDuplicates();
         System.out.println("After removing duplicates:");
+        sll.display();
+
+        sll.insertInSortedList(2);
+        System.out.println("After inserting 2:");
+        sll.display();
+
+        sll.insertInSortedList(8);
+        System.out.println("After inserting 8:");
         sll.display();
     }
 }
